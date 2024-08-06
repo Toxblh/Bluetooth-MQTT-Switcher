@@ -1,0 +1,6 @@
+node_modules/
+bluetooth-mqtt-switcher-darwin-arm64/
+bluetooth-mqtt-switcher-linux-x64/
+dist/
+app.log
+.DS_Store
