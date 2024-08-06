@@ -1,0 +1,28 @@
+{
+  "name": "bluetooth-mqtt-switcher",
+  "version": "1.0.0",
+  "description": "",
+  "main": "src/main.js",
+  "scripts": {
+    "test": "echo \"Error: no test specified\" && exit 1",
+    "start": "electron .",
+    "package": "electron-packager . bluetooth-mqtt-switcher --overwrite",
+    "postinstall": "electron-builder install-app-deps",
+    "build": "electron-builder --mac --windows --linux",
+    "release": "electron-builder --mac --windows --linux --publish always"
+  },
+  "keywords": [],
+  "author": "",
+  "license": "ISC",
+  "devDependencies": {
+    "electron": "^31.3.0",
+    "electron-builder": "^24.13.3",
+    "electron-packager": "^17.1.2"
+  },
+  "dependencies": {
+    "@abandonware/noble": "^1.9.2-25",
+    "child_process": "^1.0.2",
+    "mqtt": "^5.9.0",
+    "plist": "^3.1.0"
+  }
+}

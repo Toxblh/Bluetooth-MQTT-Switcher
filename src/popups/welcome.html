@@ -1,0 +1,66 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Welcome</title>
+  <link href="../assets/tailwind.min.css" rel="stylesheet">
+  <style>
+    /* Add basic styles for the slider */
+    .slide {
+      display: none;
+    }
+    .active {
+      display: block;
+    }
+  </style>
+</head>
+<body class="bg-gray-100">
+  <div class="container mx-auto p-4">
+    <h1 class="text-2xl font-bold mb-4">Welcome to Bluetooth MQTT Switcher</h1>
+    <div id="slider" class="bg-white p-4 rounded shadow flex items-center justify-center">
+      <div class="slide active">
+        <img src="../assets/slide1.png" alt="Slide 1" class="h-48 mb-4 object-cover mx-auto">
+        <p class="text-gray-700 text-center"><b>Welcome to the Bluetooth MQTT Switcher!</b><br />First, configure the MQTT server in the settings</p>
+      </div>
+      <div class="slide">
+        <img src="../assets/slide2.png" alt="Slide 2" class="h-48 mb-4 object-cover mx-auto">
+        <p class="text-gray-700 text-center"><b>How to use the app?</b><br />If you see your headphones connected to a host-3 and the host-3 is online like example</p>
+      </div>
+      <div class="slide">
+        <img src="../assets/slide3.png" alt="Slide 3" class="h-48 mb-4 object-cover mx-auto">
+        <p class="text-gray-700 text-center"><b>Just click on it!</b><br />And easily transfer the device to the current machine</p>
+      </div>
+    </div>
+    <div class="flex items-center justify-between mt-4">
+      <button id="prev" class="bg-blue-500 hover:bg-blue-700 text-white font-bold py-2 px-4 rounded focus:outline-none focus:shadow-outline">Previous</button>
+      <button id="next" class="bg-blue-500 hover:bg-blue-700 text-white font-bold py-2 px-4 rounded focus:outline-none focus:shadow-outline">Next</button>
+      <button id="close" class="bg-red-500 hover:bg-red-700 text-white font-bold py-2 px-4 rounded focus:outline-none focus:shadow-outline">Close</button>
+    </div>
+  </div>
+  <script>
+    let currentSlide = 0;
+    const slides = document.querySelectorAll('.slide');
+    const showSlide = (index) => {
+      slides.forEach((slide, i) => {
+        slide.classList.toggle('active', i === index);
+      });
+    };
+    document.getElementById('next').addEventListener('click', () => {
+      currentSlide = (currentSlide + 1) % slides.length;
+      showSlide(currentSlide);
+    });
+    document.getElementById('prev').addEventListener('click', () => {
+      currentSlide = (currentSlide - 1 + slides.length) % slides.length;
+      showSlide(currentSlide);
+    });
+    document.getElementById('close').addEventListener('click', () => {
+      window.close();
+    });
+    setInterval(() => {
+      currentSlide = (currentSlide + 1) % slides.length;
+      showSlide(currentSlide);
+    }, 3000);
+  </script>
+</body>
+</html>

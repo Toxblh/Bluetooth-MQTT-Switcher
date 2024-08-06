@@ -1,0 +1,47 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Settings</title>
+  <link href="../assets/tailwind.min.css" rel="stylesheet">
+</head>
+<body class="bg-gray-100">
+  <div class="container mx-auto p-4">
+    <h1 class="text-2xl font-bold mb-4">Settings</h1>
+    <form id="settings-form" class="bg-white p-4 rounded shadow">
+      <div class="mb-4">
+        <label for="mqttBroker" class="block text-gray-700 font-bold mb-2">MQTT Broker:</label>
+        <input type="text" id="mqttBroker" name="mqttBroker" required class="shadow appearance-none border rounded w-full py-2 px-3 text-gray-700 leading-tight focus:outline-none focus:shadow-outline">
+      </div>
+      <div id="mqttStatus" class="mb-4 text-gray-700"></div>
+      <div class="flex items-center justify-between">
+        <button type="submit" class="bg-blue-500 hover:bg-blue-700 text-white font-bold py-2 px-4 rounded focus:outline-none focus:shadow-outline">Save</button>
+      </div>
+    </form>
+  </div>
+  <script>
+    const { ipcRenderer } = require('electron');
+
+    document.getElementById('settings-form').addEventListener('submit', (event) => {
+      event.preventDefault();
+      const mqttBroker = document.getElementById('mqttBroker').value;
+      document.getElementById('mqttStatus').textContent = 'Attempting to connect...';
+      document.getElementById('mqttStatus').className = 'mb-4 text-yellow-500';
+      ipcRenderer.send('save-settings', { mqttBroker });
+    });
+
+    ipcRenderer.on('load-settings', (event, settings) => {
+      document.getElementById('mqttBroker').value = settings.mqttBroker;
+    });
+
+    ipcRenderer.on('mqtt-status', (event, status) => {
+      const mqttStatusElement = document.getElementById('mqttStatus');
+      mqttStatusElement.textContent = status ? 'MQTT connected' : 'MQTT not connected';
+      mqttStatusElement.className = status ? 'mb-4 text-green-500' : 'mb-4 text-red-500';
+    });
+
+    ipcRenderer.send('request-settings');
+  </script>
+</body>
+</html>
