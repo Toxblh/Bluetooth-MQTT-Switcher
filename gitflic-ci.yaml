@@ -1,0 +1,20 @@
+image: electronuserland/builder:18-wine
+
+stages:
+  - build
+
+before_script:
+ - yarn
+
+cache:
+  paths:
+    - node_modules/
+
+compile:
+  stage: build
+  script:
+    - yarn build
+  artifacts:
+    paths:
+      - dist/bluetooth-mqtt-switcher-1.0.0.AppImage
+      - dist/bluetooth-mqtt-switcher-1.0.0-arm64.dmg
