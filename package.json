@@ -8,7 +8,7 @@
     "start": "electron .",
     "package": "electron-packager . bluetooth-mqtt-switcher --overwrite",
     "postinstall": "electron-builder install-app-deps",
-    "build": "electron-builder --mac --windows --linux",
+    "build": "electron-builder --linux",
     "release": "electron-builder --mac --windows --linux --publish always"
   },
   "keywords": [],
@@ -24,5 +24,9 @@
     "child_process": "^1.0.2",
     "mqtt": "^5.9.0",
     "plist": "^3.1.0"
+  },
+  "resolutions": {
+    "wrap-ansi": "7.0.0",
+    "string-width": "4.1.0"
   }
 }
