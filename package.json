@@ -8,8 +8,29 @@
     "start": "electron .",
     "package": "electron-packager . bluetooth-mqtt-switcher --overwrite",
     "postinstall": "electron-builder install-app-deps",
-    "build": "electron-builder --mac --windows --linux",
-    "release": "electron-builder --mac --windows --linux --publish always"
+    "build": "electron-builder",
+    "release": "electron-builder --publish always"
+  },
+  "build": {
+    "appId": "com.toxblh.bluetooth-mqtt-switcher",
+    "directories": {
+      "buildResources": "src/assets"
+    },
+    "mac": {
+      "category": "public.app-category.utilities",
+      "target": [
+        {
+          "target": "dmg",
+          "arch": [
+            "universal"
+          ]
+        }
+      ]
+    },
+    "linux": {
+      "target": "AppImage",
+      "category": "Utility"
+    }
   },
   "keywords": [],
   "author": "",

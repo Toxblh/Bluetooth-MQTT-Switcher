@@ -25,7 +25,7 @@ const OfflineTimeout = 10000;
 let config = loadConfig();
 let tray = null;
 
-const icon = loadImage("assets/icon.png", 16);
+const icon = loadImage("assets/tray.png", 16);
 const greenCircle = loadImage("assets/green_circle.png", 8);
 
 let client = mqtt.connect(config.mqttBroker);
