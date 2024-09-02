@@ -7,12 +7,11 @@ function startBluetoothScan(client, topicBase, systemName, log, notifyMQTTAboutD
 
 function scanBluetoothDevices(client, topicBase, systemName, log, notifyMQTTAboutDevice, updateTrayMenu, connectedDevices) {
   const cmd = `
-  bluetoothctl devices | cut -f2 -d' ' | while read uuid; do 
-    info=$(bluetoothctl info $uuid); 
-    device=$(echo "$info" | grep "Device" | awk '{print $2}');
-    name=$(echo "$info" | grep "Name" | awk -F ': ' '{print $2}');
-    connected=$(echo "$info" | grep "Connected" | awk -F ': ' '{print $2}');
-    echo "{\\\"id\\\":\\\"$device\\\", \\\"name\\\":\\\"$name\\\", \\\"status\\\":\\\"$connected\\\"}";
+  bluetoothctl devices | cut -f2 -d' ' | while read uid; do 
+    info=$(bluetoothctl info $uid);
+    name=$(echo "$info" | grep "Name: " | awk -F ': ' '{print $2}');
+    connected=$(echo "$info" | grep "Connected: " | awk -F ': ' '{print $2}');
+    echo "{\\\"id\\\":\\\"$uid\\\", \\\"name\\\":\\\"$name\\\", \\\"status\\\":\\\"$connected\\\"}";
   done`;
 
   exec(cmd, (error, stdout, stderr) => {
