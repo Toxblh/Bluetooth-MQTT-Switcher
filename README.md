@@ -4,7 +4,7 @@
 
 ## Description
 
-<img src="src/assets/logo.png" align="right" title="Bluetooth MQTT Switcher" width="110" height="110">
+<img src="src/assets/icon.png" align="right" title="Bluetooth MQTT Switcher" width="110" height="110">
 
 Bluetooth-MQTT-Switcher is a program that allows you to easily switch Bluetooth devices between devices that do not support Multipoint and have Bluetooth versions below 5.0. The program intercepts paired devices, enabling switching without the need to manually disconnect and reconnect.
 

@@ -4,7 +4,7 @@
 
 ## Описание
 
-<img src="src/assets/logo.png" align="right" title="Bluetooth MQTT Switcher" width="110" height="110">
+<img src="src/assets/icon.png" align="right" title="Bluetooth MQTT Switcher" width="110" height="110">
 
 Bluetooth-MQTT-Switcher - это программа, позволяющая легко переключать Bluetooth устройства между устройствами, которые не поддерживают Multipoint и имеют Bluetooth версии ниже 5.0. Программа перехватывает сопряженные устройства, позволяя осуществлять переключение без необходимости разрыва и нового установления соединений вручную.
 
